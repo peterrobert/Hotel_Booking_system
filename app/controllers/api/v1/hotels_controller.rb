@@ -10,8 +10,10 @@ class Api::V1::HotelsController < ApplicationController
 
     def show
         hotel = Hotel.find( params[:id] )
+        @service = hotel.services
         render json: {
               data: hotel,
+              services:  @service,
               status: :ok
            }  
     end
@@ -19,7 +21,7 @@ class Api::V1::HotelsController < ApplicationController
 
     private
     def params_hotel
-    params.require(:Hotel).permit(:name, :description, :price, :location, :images)     
+     params.require(:Hotel).permit(:name, :description, :price, :location, :images)     
     end
 
 end
