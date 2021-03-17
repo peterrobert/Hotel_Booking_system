@@ -1,6 +1,9 @@
 class Hotel < ApplicationRecord
     has_many_attached :images, :dependent => :destroy
     has_many :services, :dependent => :destroy
+
+    has_many :bookings
+    has_many :users, through: :bookings
     
     validates :name, presence: true
     validates :description, presence: true
