@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :hotels, only: [:index, :show]
       resources :sessions, only:[:create, :destroy]
       resources :users, only:[:create]
+      resources :bookings, only:[:create, :index, :show]
     end
   end
 end
