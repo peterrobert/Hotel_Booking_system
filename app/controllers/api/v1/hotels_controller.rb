@@ -19,6 +19,7 @@ class Api::V1::HotelsController < ApplicationController
         render json: {
 
               data: hotel,
+            #   images: @avatars,
               status: :ok
 
            }
@@ -29,7 +30,7 @@ class Api::V1::HotelsController < ApplicationController
     private
     def params_hotel
 
-    params.require(:Hotel).permit(:name, :description, :price, :location)
+    params.require(:Hotel).permit(:name, :description, :price, :location, :images)
         
     end
 
