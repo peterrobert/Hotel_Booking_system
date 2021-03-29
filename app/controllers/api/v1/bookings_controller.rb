@@ -1,10 +1,16 @@
 class Api::V1::BookingsController < ApplicationController
+    before_action :authenticate
 
     def index
-        booking = Booking.all
+        booking = @current_user.bookings
+        all_booking = booking.all
+
+        hotel = @current_user.hotels
+        all_hotel = hotel.all
 
         render json: {
-            data: booking,
+            data:  all_booking,
+            hotel: all_hotel,
             status: :ok
         }
     end
@@ -20,7 +26,6 @@ class Api::V1::BookingsController < ApplicationController
             users: user,
             status: :ok
         }
-
 
     end
   
@@ -45,6 +50,13 @@ class Api::V1::BookingsController < ApplicationController
     def booking_params
         params.require(:booking).permit(:arrival, :departure, :room, :guest, :hotel_id, :user_id)
     end
+
+    def authenticate
+      authenticate_or_request_with_http_token do |token, _options|
+       @current_user = User.find_by(authentication_token: token)
+      end
+    end
+
     
     
 
