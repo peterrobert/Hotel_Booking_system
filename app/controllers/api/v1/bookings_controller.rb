@@ -3,35 +3,23 @@ class Api::V1::BookingsController < ApplicationController
 
     def index
         booking = @current_user.bookings
-        all_booking = booking.all
+        all_booking = booking.all.order(created_at: :desc)
 
         hotel = @current_user.hotels
         all_hotel = hotel.all
 
         render json: {
-            data:  all_booking,
-            hotel: all_hotel,
+            data: {
+                     reservations: all_booking,
+                     reserved_hotels:all_hotel, 
+                    },
             status: :ok
         }
     end
     
-    def show
-        booking = Booking.find(params[:id])
-        user = booking.user
-        hotel = booking.hotel
-
-        render json: {
-            data: booking,
-            hotels: hotel,
-            users: user,
-            status: :ok
-        }
-
-    end
-  
 
     def create
-     booking = Booking.new(booking_params)
+     booking = @current_user.bookings.new(booking_params)
      if booking.save
         render json:{
             data: booking,
@@ -48,7 +36,7 @@ class Api::V1::BookingsController < ApplicationController
     private
 
     def booking_params
-        params.require(:booking).permit(:arrival, :departure, :room, :guest, :hotel_id, :user_id)
+        params.require(:booking).permit(:arrival, :departure, :room, :guest, :hotel_id)
     end
 
     def authenticate

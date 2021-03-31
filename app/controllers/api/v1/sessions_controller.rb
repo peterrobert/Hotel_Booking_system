@@ -17,7 +17,7 @@ class Api::V1::SessionsController < ApplicationController
 
 
     def destroy
-        user = User.find(params[:id])
+        user = @current_user
         user.authentication_token = nil;
         if  user.save 
             render json:{
@@ -32,6 +32,15 @@ class Api::V1::SessionsController < ApplicationController
         end
 
     end
+
+    private
+
+    def authenticate
+        authenticate_or_request_with_http_token do |token, _options|
+         @current_user = User.find_by(authentication_token: token)
+        end
+   end
+  
         
     
 end
