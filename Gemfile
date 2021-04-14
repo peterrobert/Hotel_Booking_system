@@ -28,6 +28,10 @@ gem 'rubocop', '~>0.81.0'
 # gem 'image_processing', '~> 1.2'
 gem 'rails_admin', '~> 2.0'
 
+# Hidding secret keys
+
+gem "figaro"
+
 # Plus integrations with:
 gem 'devise'
 gem 'simple_token_authentication', '~> 1.0'
