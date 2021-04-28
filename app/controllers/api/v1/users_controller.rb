@@ -5,13 +5,10 @@ class Api::V1::UsersController < ApplicationController
 
       render json: {
         data: user,
-        status: :created,
       }
 
     else
-      render json: {
-        status: :unprocessable_entity
-      }
+      head( :unprocessable_entity)
 
     end
   end

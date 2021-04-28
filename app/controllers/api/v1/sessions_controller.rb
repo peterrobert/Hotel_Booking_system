@@ -4,7 +4,6 @@ class Api::V1::SessionsController < ApplicationController
 
       render json: {
         data: user,
-        status: :created,
       }
 
     else
