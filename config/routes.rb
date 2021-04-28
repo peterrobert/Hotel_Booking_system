@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       resources :bookings, only:[:create, :index, :show]
     end
   end
-   
-  root "static#home"
+  
 
 end
