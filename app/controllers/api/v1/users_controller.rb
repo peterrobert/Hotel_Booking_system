@@ -6,7 +6,6 @@ class Api::V1::UsersController < ApplicationController
       render json: {
         data: user,
         status: :created,
-        loggedIn: true
       }
 
     else

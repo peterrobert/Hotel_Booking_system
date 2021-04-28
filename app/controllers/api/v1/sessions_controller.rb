@@ -5,7 +5,6 @@ class Api::V1::SessionsController < ApplicationController
       render json: {
         data: user,
         status: :created,
-        loggedIn: true
       }
 
     else
@@ -19,7 +18,6 @@ class Api::V1::SessionsController < ApplicationController
     if user.save
       render json: {
         status: :ok,
-        loggedIn: false
       }
     else
       render json: {
