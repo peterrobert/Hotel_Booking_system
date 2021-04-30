@@ -13,7 +13,6 @@ class Api::V1::BookingsController < ApplicationController
         reservations: all_booking,
         reserved_hotels: all_hotel
       },
-      status: :ok
     }
   end
 
@@ -22,12 +21,9 @@ class Api::V1::BookingsController < ApplicationController
     if booking.save
       render json: {
         data: booking,
-        status: :created
       }
     else
-      render json: {
-        status: :unprocessable_entity
-      }
+      head( :unprocessable_entity)
     end
   end
 

@@ -11,18 +11,13 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
-  def destroy
-    user = User.find(params[:id])
-    user.authentication_token = nil
-    if user.save
-      render json: {
-        status: :ok,
-      }
-    else
-      render json: {
-        status: :unprocessable_entity
-      }
-
-    end
-  end
+  # def destroy
+  #   user = User.find(params[:id])
+  #   user.authentication_token = nil
+  #   if user.save
+  #     head(:ok)
+  #   else
+  #     head(:unprocessable_entity)
+  #   end
+  # end
 end
