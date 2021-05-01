@@ -3,7 +3,7 @@ class Api::V1::BookingsController < ApplicationController
 
   def index
     booking = @current_user.bookings
-    all_booking = booking.all.order(created_at: :desc)
+    all_booking = booking.all.ordering
 
     hotel = @current_user.hotels
     all_hotel = hotel.all
