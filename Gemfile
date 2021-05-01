@@ -30,7 +30,7 @@ gem 'rails_admin', '~> 2.0'
 
 # Hidding secret keys
 
-gem "figaro"
+gem 'figaro'
 
 # Plus integrations with:
 gem 'devise'

@@ -12,7 +12,7 @@ class Api::V1::BookingsController < ApplicationController
       data: {
         reservations: all_booking,
         reserved_hotels: all_hotel
-      },
+      }
     }
   end
 
@@ -20,10 +20,10 @@ class Api::V1::BookingsController < ApplicationController
     booking = @current_user.bookings.new(booking_params)
     if booking.save
       render json: {
-        data: booking,
+        data: booking
       }
     else
-      head( :unprocessable_entity)
+      head(:unprocessable_entity)
     end
   end
 

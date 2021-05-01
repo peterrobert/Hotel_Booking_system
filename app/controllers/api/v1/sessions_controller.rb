@@ -3,21 +3,11 @@ class Api::V1::SessionsController < ApplicationController
     if (user = User.find_by_email(params[:email])) && user.valid_password?(params[:password])
 
       render json: {
-        data: user,
+        data: user
       }
 
     else
       head(:unauthorized)
     end
   end
-
-  # def destroy
-  #   user = User.find(params[:id])
-  #   user.authentication_token = nil
-  #   if user.save
-  #     head(:ok)
-  #   else
-  #     head(:unprocessable_entity)
-  #   end
-  # end
 end
