@@ -2,7 +2,8 @@ class Api::V1::HotelsController < ApplicationController
   def index
     hotel = Hotel.all
     render json: {
-      data: hotel
+      data: hotel,
+      status: :ok
     }
   end
 
@@ -11,7 +12,8 @@ class Api::V1::HotelsController < ApplicationController
     @service = hotel.services
     render json: {
       data: hotel,
-      services: @service
+      services: @service,
+      status: :ok
     }
   end
 
