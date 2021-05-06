@@ -1,4 +1,3 @@
-# rubocop:disable Lint/NestedMethodDefinition
 class Api::V1::SessionsController < ApplicationController
   def create
     if (user = User.find_by_email(params[:email])) && user.valid_password?(params[:password])
@@ -8,12 +7,11 @@ class Api::V1::SessionsController < ApplicationController
     else
       head(:unauthorized)
     end
-
   end
 
   private
+
   def sessions
     params.require(:user).permit(:email, :password)
   end
 end
-# rubocop:enable Lint/NestedMethodDefinition

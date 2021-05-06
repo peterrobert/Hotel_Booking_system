@@ -1,3 +1,4 @@
+# rubocop:disable Layout/HashAlignment
 class Api::V1::HotelsController < ApplicationController
   def index
     data = Hotel.all
@@ -11,7 +12,7 @@ class Api::V1::HotelsController < ApplicationController
     render json: {
       data: hotel,
       services: @services
-    }, 
+    },
     status: :ok
   end
 
@@ -21,3 +22,4 @@ class Api::V1::HotelsController < ApplicationController
     params.require(:Hotel).permit(:name, :description, :price, :location, :images)
   end
 end
+# rubocop:enable Layout/HashAlignment
