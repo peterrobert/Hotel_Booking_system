@@ -2,12 +2,8 @@ class Api::V1::BookingsController < ApplicationController
   before_action :authenticate
 
   def index
-    booking = @current_user.bookings
-    all_booking = booking.all.ordering
-
-    hotel = @current_user.hotels
-    all_hotel = hotel.all
-
+    all_booking = @current_user.bookings.ordering
+    all_hotel = @current_user.hotels
     render json: {
       data: {
         reservations: all_booking,
